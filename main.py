@@ -13,7 +13,7 @@ def main():
         return
     
     while True:
-        # 1. Generate computer move and HMAC before user input
+
         key = CryptoUtil.generate_key()
         computer_move = moves[CryptoUtil.generate_key()[0] % len(moves)]
         hmac_value = CryptoUtil.compute_hmac(computer_move, key)
@@ -40,7 +40,7 @@ def main():
             print("Invalid choice. Try again.")
             continue
 
-        # 2. Display moves and result after user input
+        
         print(f"Your move: {player_move}")
         print(f"Computer move: {computer_move}")
 
@@ -53,7 +53,7 @@ def main():
         elif winner == "Computer wins!":
             print("Computer wins!")
 
-        # 3. Display the HMAC key for verification after displaying the result
+        
         print(f"HMAC key: {key.hex()}\n")
 
 if __name__ == "__main__":

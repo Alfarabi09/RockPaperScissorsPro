@@ -5,7 +5,7 @@ import hashlib
 class CryptoUtil:
     @staticmethod
     def generate_key():
-        return os.urandom(32)  # 256-bit key
+        return os.urandom(32)  
 
     @staticmethod
     def compute_hmac(message, key):
