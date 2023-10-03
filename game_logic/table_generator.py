@@ -1,3 +1,5 @@
+from prettytable import PrettyTable
+
 class TableGenerator:
     @staticmethod
     def generate_table(moves):
@@ -15,25 +17,19 @@ class TableGenerator:
                 else:
                     row.append("Lose")
             table.append(row)
-
         return table
     
     @staticmethod
     def print_table(moves):
         table = TableGenerator.generate_table(moves)
-        n = len(moves)
-    
+
         
-        max_len = max(len(move) for move in moves)
-    
+        ptable = PrettyTable()
+        ptable.field_names = ["Move"] + moves
+
         
-        header_format = "| {0:" + str(max_len) + "} " + " ".join(["{" + str(i+1) + ":" + str(max_len) + "}" for i in range(n)]) + " |"
-        separator = "+-" + "-" * max_len + "-+" + ("-" + "-" * max_len + "-+") * n
-    
-        
-        print(separator)
-        print(header_format.format("", *moves))  
-        print(separator)
         for row in table:
-            print(header_format.format(*row))
-            print(separator)
+            ptable.add_row(row)
+        
+        
+        print(ptable)
